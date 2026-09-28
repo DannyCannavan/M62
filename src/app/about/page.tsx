@@ -4,7 +4,6 @@ export default function About() {
   return (
     <>
 
-      <main>
         {/* Hero */}
         <section className="bg-gray-900 px-6 py-20 text-white">
           <div className="mx-auto max-w-6xl">
@@ -130,7 +129,6 @@ export default function About() {
             </a>
           </div>
         </section>
-      </main>
     </>
   );
 }

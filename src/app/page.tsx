@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <>
 
-      <main>
+
         <section className="bg-gray-900 px-6 py-24 text-white">
           <div className="mx-auto max-w-6xl">
             <h1 className="max-w-3xl text-5xl font-bold tracking-tight sm:text-6xl">
@@ -83,7 +83,6 @@ export default function Home() {
             </p>
           </div>
         </section>
-      </main>
     </>
   );
 }

@@ -4,7 +4,7 @@ export default function Contact() {
   return (
     <>
 
-      <main>
+
         <section className="bg-gray-900 px-6 py-20 text-white">
           <div className="mx-auto max-w-6xl">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
@@ -98,7 +98,7 @@ export default function Contact() {
             </div>
           </div>
         </section>
-      </main>
+
     </>
   );
 }
