@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+
 import EventCard from "@/components/events/EventCard";
 
 const events = [
@@ -21,7 +21,6 @@ const events = [
 export default function Events() {
   return (
     <>
-      <Header />
 
       <main>
         <section className="bg-gray-900 px-6 py-20 text-white">

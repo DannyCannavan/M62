@@ -1,9 +1,8 @@
-import Header from "@/components/Header";
+
 
 export default function Contact() {
   return (
     <>
-      <Header />
 
       <main>
         <section className="bg-gray-900 px-6 py-20 text-white">
