@@ -9,6 +9,8 @@ export default function Contact() {
     message: "",// added states for what is sent in the form
   });
 
+  const [error, setError] = useState("");
+
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -23,8 +25,25 @@ export default function Contact() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    setError("");
+
+    if (!formData.name.trim()) {
+        setError("Please enter your name.");
+        return;
+    }
+
+    if (!formData.email.trim()) {
+        setError("Please enter your email address.");
+        return;
+    }
+
+    if (!formData.message.trim()) {
+        setError("Please enter a message.");
+        return;
+    }
+
     console.log(formData);
-  };
+    };
 
   return (
     <main>
@@ -122,12 +141,18 @@ export default function Contact() {
                   className="mt-2 w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900"
                 />
               </div>
+                {error && (
+                <p className="text-sm font-medium text-red-600">
+                    {error}
+                </p>
+                )}
 
-              <button type="submit"
+                <button
+                type="submit"
                 className="rounded-md bg-gray-900 px-6 py-3 font-semibold text-white hover:bg-gray-700"
-              >
+                >
                 Send Message
-              </button>
+                </button>
             </form>
           </div>
         </div>
