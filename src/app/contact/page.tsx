@@ -2,51 +2,83 @@
 
 import { useState } from "react";
 
+import { contactSchema } from "@/lib/validation/contact";
+
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: "",// added states for what is sent in the form
+    message: "",
   });
 
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    const { name, value } = event.target; //changes the state when the user is typing 
+    const { name, value } = event.target;
 
     setFormData((current) => ({
       ...current,
       [name]: value,
     }));
+
+    // Clear messages when the user starts editing again
+    setError("");
+    setSuccess("");
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (
+    event: React.FormEvent<HTMLFormElement>
+  ) => {
     event.preventDefault();
 
     setError("");
+    setSuccess("");
+    setIsSubmitting(true);
 
-    if (!formData.name.trim()) {
-        setError("Please enter your name.");
-        return;
+    const result = contactSchema.safeParse(formData);
+
+    if (!result.success) {
+      setError(result.error.issues[0].message);
+      setIsSubmitting(false);
+      return;
     }
 
-    if (!formData.email.trim()) {
-        setError("Please enter your email address.");
-        return;
-    }
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(result.data),
+      });
 
-    if (!formData.message.trim()) {
-        setError("Please enter a message.");
-        return;
-    }
+      const data = await response.json();
 
-    console.log(formData);
-    };
+      if (!response.ok) {
+        setError(data.error || "Something went wrong. Please try again.");
+        return;
+      }
+
+      setSuccess(data.message);
+
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+      });
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
-    <main>
+    <>
       <section className="bg-gray-900 px-6 py-20 text-white">
         <div className="mx-auto max-w-6xl">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
@@ -84,10 +116,7 @@ export default function Contact() {
               Send a Message
             </h2>
 
-            <form
-              onSubmit={handleSubmit}
-              className="mt-6 space-y-5"
-            >
+            <form onSubmit={handleSubmit} className="mt-6 space-y-5">
               <div>
                 <label
                   htmlFor="name"
@@ -141,22 +170,30 @@ export default function Contact() {
                   className="mt-2 w-full rounded-md border border-gray-300 px-4 py-3 text-gray-900"
                 />
               </div>
-                {error && (
-                <p className="text-sm font-medium text-red-600">
-                    {error}
-                </p>
-                )}
 
-                <button
+              {error && (
+                <p className="text-sm font-medium text-red-600">
+                  {error}
+                </p>
+              )}
+
+              {success && (
+                <p className="text-sm font-medium text-green-600">
+                  {success}
+                </p>
+              )}
+
+              <button
                 type="submit"
-                className="rounded-md bg-gray-900 px-6 py-3 font-semibold text-white hover:bg-gray-700"
-                >
-                Send Message
-                </button>
+                disabled={isSubmitting}
+                className="rounded-md bg-gray-900 px-6 py-3 font-semibold text-white hover:bg-gray-700 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </button>
             </form>
           </div>
         </div>
       </section>
-    </main>
+    </>
   );
 }
