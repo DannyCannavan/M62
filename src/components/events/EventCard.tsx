@@ -15,7 +15,7 @@ export default function EventCard({
         {date}
       </p>
 
-      <h3 className="mt-3 text-2xl font-bold text-gray-900">
+      <h3 className="mt-3 text-2xl font-bold text-gray-300">
         {title}
       </h3>
 
@@ -25,7 +25,7 @@ export default function EventCard({
 
       <a
         href="/events"
-        className="mt-6 inline-block font-semibold text-gray-900 underline"
+        className="mt-6 inline-block font-semibold text-gray-300 underline"
       >
         Event details
       </a>

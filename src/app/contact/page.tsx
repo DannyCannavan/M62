@@ -95,17 +95,17 @@ export default function Contact() {
       <section className="px-6 py-20">
         <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
           <div>
-            <h2 className="text-3xl font-bold text-gray-900">
+            <h2 className="text-3xl font-bold text-gray-300">
               Get in Touch
             </h2>
 
-            <p className="mt-4 leading-7 text-gray-600">
+            <p className="mt-4 leading-7 text-gray-400">
               If you would like to find out more about The M62 Charity,
               support our work or ask about an upcoming event, please get in
               touch.
             </p>
 
-            <p className="mt-6 text-gray-600">
+            <p className="mt-6 text-gray-400">
               Contact details will be added here once confirmed by the
               charity.
             </p>

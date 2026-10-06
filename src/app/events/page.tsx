@@ -29,7 +29,7 @@ export default async function Events() {
 
       <section className="px-6 py-20">
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold text-gray-900">
+          <h2 className="text-3xl font-bold text-gray-300">
             Upcoming Events
           </h2>
 

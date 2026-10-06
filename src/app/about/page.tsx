@@ -27,20 +27,20 @@ export default function About() {
                 Our Story
               </h2>
 
-              <p className="mt-6 text-lg leading-8 text-gray-600">
+              <p className="mt-6 text-lg leading-8 text-gray-400">
                 The M62 Charity was established in October 2025, following
                 several years of charity events supporting veterans and
                 families in honour and memory of the twelve people killed in
                 the M62 coach bombing in 1974.
               </p>
 
-              <p className="mt-4 text-lg leading-8 text-gray-600">
+              <p className="mt-4 text-lg leading-8 text-gray-400">
                 The bombing took the lives of twelve innocent soldiers and
                 civilians, including two young children who had been home on
                 weekend leave and were travelling back to Catterick.
               </p>
 
-              <p className="mt-4 text-lg leading-8 text-gray-600">
+              <p className="mt-4 text-lg leading-8 text-gray-400">
                 The tragedy devastated many lives and continues to affect
                 families today. The charity was created to ensure that the
                 twelve people who lost their lives are remembered.
@@ -89,11 +89,11 @@ export default function About() {
         {/* The Twelve */}
         <section className="px-6 py-20">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold text-gray-900">
+            <h2 className="text-3xl font-bold text-gray-300">
               The Twelve
             </h2>
 
-            <p className="mt-4 text-lg leading-8 text-gray-600">
+            <p className="mt-4 text-lg leading-8 text-gray-400">
               Written in memory of those who lost their lives, &quot;The
               Twelve&quot; is a poem written by the charity's founder as a
               tribute to their memory.

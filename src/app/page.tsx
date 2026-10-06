@@ -43,7 +43,7 @@ export default function Home() {
               Our Story
             </h2>
 
-            <p className="mt-4 max-w-3xl text-lg leading-8 text-gray-600">
+            <p className="mt-4 max-w-3xl text-lg leading-8 text-gray-400">
               The M62 Charity was established to remember those who lost their
               lives in the 1974 M62 coach bombing and to support veterans and
               families who have suffered loss through terrorism.
@@ -73,11 +73,11 @@ export default function Home() {
 
         <section className="px-6 py-20">
           <div className="mx-auto max-w-6xl">
-            <h2 className="text-3xl font-bold text-gray-900">
+            <h2 className="text-3xl font-bold text-gray-300">
               Support Us
             </h2>
 
-            <p className="mt-4 max-w-3xl text-lg leading-8 text-gray-600">
+            <p className="mt-4 max-w-3xl text-lg leading-8 text-gray-400">
               Whether you attend an event, support our fundraising or simply
               help spread the word, your support makes a difference.
             </p>
