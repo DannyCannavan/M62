@@ -5,9 +5,10 @@ export default async function Events() {
   const supabase = createSupabaseServerClient();
 
   const { data: events, error } = await supabase
-    .from("events")
-    .select("id, title, date, description")
-    .order("date", { ascending: true });
+  .from("events")
+  .select("id, title, slug, date, description")
+  .gte("date", new Date().toISOString())
+  .order("date", { ascending: true });
 
   if (error) {
     console.error("Failed to fetch events:", error);
@@ -45,6 +46,7 @@ export default async function Events() {
                 })}
                 title={event.title}
                 description={event.description}
+                slug={event.slug}
               />
             ))}
           </div>

@@ -43,7 +43,7 @@ export default async function EventPage({ params }: EventPageProps) {
 
       <section className="px-6 py-20">
         <div className="mx-auto max-w-3xl">
-          <p className="text-lg leading-8 text-gray-400">
+          <p className="text-lg leading-8 text-gray-00">
             {event.description}
           </p>
         </div>
