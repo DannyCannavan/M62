@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { contactSchema } from "@/lib/validation/contact";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export async function POST(request: Request) {
   try {
@@ -17,7 +18,22 @@ export async function POST(request: Request) {
       );
     }
 
-    console.log("Contact form submission:", result.data);
+    const supabase = createSupabaseServerClient();
+
+    const { error } = await supabase
+      .from("contact_messages")
+      .insert(result.data);
+
+    if (error) {
+      console.error("Supabase error:", error);
+
+      return NextResponse.json(
+        {
+          error: "Failed to save message.",
+        },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json(
       {
@@ -25,7 +41,9 @@ export async function POST(request: Request) {
       },
       { status: 200 }
     );
-  } catch {
+  } catch (error) {
+    console.error("Contact API error:", error);
+
     return NextResponse.json(
       {
         error: "Something went wrong.",
